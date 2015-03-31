@@ -1,4 +1,4 @@
-# React Native Refreshable ListView
+# React Native RefreshableListView
 A pull-to-refresh ListView which shows a loading spinner while your data reloads
 
 In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHackerNews)):
@@ -7,6 +7,7 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ### example
 
+```js
 var React = require('react-native')
 var {Text, View, ListView} = React
 
@@ -48,3 +49,4 @@ var ArticlesScreen = React.createClass({
     )
   }
 })
+```

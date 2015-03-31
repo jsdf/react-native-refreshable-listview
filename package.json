@@ -1,11 +1,29 @@
 {
   "name": "react-native-refreshable-listview",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "react-native-component",
+    "mobile",
+    "ui"
+  ],
+  "files": [
+    "index.js",
+    "RefreshableListView.js"
+  ],
+  "homepage": "https://github.com/jsdf/react-native-refreshable-listview",
+  "bugs": "https://github.com/jsdf/react-native-refreshable-listview/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsdf/react-native-refreshable-listview.git"
+  }
 }

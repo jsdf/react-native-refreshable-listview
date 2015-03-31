@@ -34,13 +34,22 @@ var RefreshableListView = React.createClass({
     if (this.willReload || this.state.reloading) return
 
     this.willReload = true
-    Promise.all([
-      this.props.loadData(),
-      new Promise((resolve) => this.setState({reloading: true}, resolve)),
-      new Promise((resolve) => setTimeout(resolve, this.props.minDisplayTime)),
-    ]).then(([data]) => {
-      this.willReload = false
-      this.setState({reloading: false})
+
+    var loadingDataPromise = new Promise((resolve) => {
+      var maybePromise = this.props.loadData(resolve)
+      if (maybePromise && typeof maybePromise.then == 'function') {
+        loadingDataPromise = maybePromise
+      }
+
+      Promise.all([
+        loadingDataPromise,
+        new Promise((resolve) => this.setState({reloading: true}, resolve)),
+        new Promise((resolve) => setTimeout(resolve, this.props.minDisplayTime)),
+      ]).then(([data]) => {
+        this.willReload = false
+        this.setState({reloading: false})
+      })
+
     })
   },
   renderHeader() {
@@ -54,7 +63,7 @@ var RefreshableListView = React.createClass({
             <Text style={styles.description}>
               {this.props.refreshDescription}
             </Text>
-            <ActivityIndicator style={style.activityIndicator} />
+            <ActivityIndicator style={styles.activityIndicator} />
           </View>
         </View>
       )

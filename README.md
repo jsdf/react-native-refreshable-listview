@@ -5,6 +5,15 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ![React Native Hacker News](http://i.imgur.com/gVmrxDe.png)
 
+### usage
+
+props:
+
+- `loadData`: a function returning a promise or taking a callback, invoked 
+  upon pulldown. spinner will show until the promise resolves or the 
+  callback is called.
+- `refreshDescription`: text/element to show alongside spinner.
+
 ### example
 
 ```js
@@ -35,10 +44,6 @@ var ArticlesScreen = React.createClass({
     return <ArticleView article={article} />
   },
   render() {
-    // important props
-    // - loadData: a function returning a promise, invoked upon pulldown. 
-    //   spinner will show until the promise resolves
-    // - refreshDescription: text/content to show alongside spinner
     return (
       <RefreshableListView
         dataSource={this.state.dataSource}

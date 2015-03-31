@@ -1,0 +1,11 @@
+{
+  "name": "react-native-refreshable-listview",
+  "version": "1.0.0",
+  "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
+  "license": "ISC"
+}

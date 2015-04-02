@@ -56,8 +56,8 @@ var RefreshableListView = React.createClass({
     if (this.state.reloading) {
       var styles = Object.assign({}, baseStyles, this.props.stylesheet)
       var ActivityIndicator = this.props.activityIndicatorComponent
-
-      return (
+      var customHeader = this.props.renderHeader ? this.props.renderHeader.call() : null
+      var refreshHeader = (
         <View style={[styles.container, styles.wrapper]}>
           <View style={[styles.container, styles.loading]}>
             <Text style={styles.description}>
@@ -67,8 +67,21 @@ var RefreshableListView = React.createClass({
           </View>
         </View>
       )
+
+      if (customHeader) {
+        return (
+          <View>
+            {refreshHeader}
+            <View>
+              {customHeader}
+            </View>
+          </View>
+        )
+      } else {
+        return refreshHeader
+      }
     } else {
-      return null
+      return this.props.renderHeader ? this.props.renderHeader.call() : null
     }
   },
   render() {

@@ -75,6 +75,7 @@ var RefreshableListView = React.createClass({
     return (
       <ListView
         {...this.props}
+        ref="listview"
         onScroll={this.handleScroll}
         renderHeader={this.renderHeader}
       />

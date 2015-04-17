@@ -5,6 +5,7 @@ var {
   StyleSheet,
   View,
   Text,
+  PropTypes,
 } = React
 
 // must be less than ~50px due to ScrollView bug (event only fires once)
@@ -13,6 +14,14 @@ var {
 var PULLDOWN_DISTANCE = 40 // pixels
 
 var RefreshableListView = React.createClass({
+  propTypes: {
+    onScroll: PropTypes.func,
+    loadData: PropTypes.func.isRequired,
+    minDisplayTime: PropTypes.number,
+    activityIndicatorComponent: PropTypes.func,
+    stylesheet: PropTypes.object,
+    refreshDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  },
   getDefaultProps() {
     return {
       activityIndicatorComponent: ActivityIndicatorIOS,
@@ -37,7 +46,7 @@ var RefreshableListView = React.createClass({
 
     var loadingDataPromise = new Promise((resolve) => {
       var maybePromise = this.props.loadData(resolve)
-      if (maybePromise && typeof maybePromise.then == 'function') {
+      if (maybePromise && typeof maybePromise.then === 'function') {
         loadingDataPromise = maybePromise
       }
 
@@ -49,7 +58,6 @@ var RefreshableListView = React.createClass({
         this.willReload = false
         this.setState({reloading: false})
       })
-
     })
   },
   renderHeader() {
@@ -71,11 +79,11 @@ var RefreshableListView = React.createClass({
       return null
     }
   },
-  getScrollResponder: function() {
-    return this.refs["listview"];
+  getScrollResponder() {
+    return this.refs.listview
   },
-  setNativeProps: function(props) {
-    this.refs["listview"].setNativeProps(props);
+  setNativeProps(props) {
+    this.refs.listview.setNativeProps(props)
   },
   render() {
     return (
@@ -86,7 +94,7 @@ var RefreshableListView = React.createClass({
         renderHeader={this.renderHeader}
       />
     )
-  }
+  },
 })
 
 var baseStyles = StyleSheet.create({

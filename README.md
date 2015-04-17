@@ -19,11 +19,11 @@ props:
 ```js
 var React = require('react-native')
 var {Text, View, ListView} = React
+var RefreshableListView = require('react-native-refreshable-listview')
 
 var ArticleStore = require('../stores/ArticleStore')
 var StoreWatchMixin = require('./StoreWatchMixin')
 var ArticleView = require('./ArticleView')
-var RefreshableListView = require('./RefreshableListView')
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 

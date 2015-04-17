@@ -4,7 +4,7 @@
   "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
   "license": "ISC",
@@ -25,5 +25,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/jsdf/react-native-refreshable-listview.git"
+  },
+  "devDependencies": {
+    "eslint": "^0.19.0",
+    "eslint-plugin-react": "^2.1.1"
   }
 }

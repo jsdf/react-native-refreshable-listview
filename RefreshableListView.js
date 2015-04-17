@@ -7,6 +7,7 @@ var {
   Text,
   PropTypes,
 } = React
+var isPromise = require('is-promise')
 
 // must be less than ~50px due to ScrollView bug (event only fires once)
 // https://github.com/facebook/react-native/pull/452
@@ -45,9 +46,10 @@ var RefreshableListView = React.createClass({
     this.willReload = true
 
     var loadingDataPromise = new Promise((resolve) => {
-      var maybePromise = this.props.loadData(resolve)
-      if (maybePromise && typeof maybePromise.then === 'function') {
-        loadingDataPromise = maybePromise
+      var loadDataReturnValue = this.props.loadData(resolve)
+
+      if (isPromise(loadDataReturnValue)) {
+        loadingDataPromise = loadDataReturnValue
       }
 
       Promise.all([

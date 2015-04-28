@@ -5,12 +5,18 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ![React Native Hacker News](http://i.imgur.com/gVmrxDe.png)
 
+### installation
+
+```bash
+npm install react-native-refreshable-listview --save
+```
+
 ### usage
 
 props:
 
-- `loadData`: a function returning a promise or taking a callback, invoked 
-  upon pulldown. spinner will show until the promise resolves or the 
+- `loadData`: a function returning a promise or taking a callback, invoked
+  upon pulldown. spinner will show until the promise resolves or the
   callback is called.
 - `refreshDescription`: text/element to show alongside spinner.
 

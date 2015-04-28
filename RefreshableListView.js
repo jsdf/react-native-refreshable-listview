@@ -22,11 +22,13 @@ var RefreshableListView = React.createClass({
     activityIndicatorComponent: PropTypes.func,
     stylesheet: PropTypes.object,
     refreshDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    listViewAdjustContentInsets: React.PropTypes.bool,
   },
   getDefaultProps() {
     return {
       activityIndicatorComponent: ActivityIndicatorIOS,
       minDisplayTime: 300,
+      listViewAdjustContentInsets: true,
     }
   },
   getInitialState() {
@@ -94,6 +96,7 @@ var RefreshableListView = React.createClass({
         ref="listview"
         onScroll={this.handleScroll}
         renderHeader={this.renderHeader}
+        automaticallyAdjustContentInsets={this.props.listViewAdjustContentInsets}
       />
     )
   },

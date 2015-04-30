@@ -4,7 +4,9 @@
   "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
   "main": "index.js",
   "scripts": {
-    "test": "eslint ."
+    "lint": "eslint .",
+    "jest": "BABEL_JEST_STAGE=0 jest",
+    "test": "npm run lint && npm run jest"
   },
   "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
   "license": "ISC",
@@ -26,9 +28,30 @@
     "type": "git",
     "url": "git://github.com/jsdf/react-native-refreshable-listview.git"
   },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "setupEnvScriptFile": "<rootDir>/node_modules/babel-jest/node_modules/babel-core/lib/babel/polyfill.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/babel-jest",
+      "<rootDir>/node_modules/is-promise"
+    ],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ]
+  },
   "devDependencies": {
+    "babel-jest": "^5.0.1",
     "eslint": "^0.19.0",
-    "eslint-plugin-react": "^2.1.1"
+    "eslint-plugin-react": "^2.1.1",
+    "jest-cli": "^0.4.0",
+    "react": "^0.13.1"
   },
   "dependencies": {
     "is-promise": "^2.0.0"

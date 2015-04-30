@@ -1,1 +1,1 @@
-module.exports = require('./RefreshableListView')
+module.exports = require('./lib/RefreshableListView')

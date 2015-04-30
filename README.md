@@ -9,10 +9,12 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ### props
 
-- `loadData: func.isRequired`: a function returning a promise or taking a callback, invoked 
+- `loadData: func.isRequired`  
+  A function returning a promise or taking a callback, invoked 
   upon pulldown. spinner will show until the promise resolves or the 
   callback is called.
-- `refreshDescription: oneOfType([string, element])`: text/element to show alongside spinner.
+- `refreshDescription: oneOfType([string, element])`  
+  Text/element to show alongside spinner.
 - `minDisplayTime: number`
 - `minBetweenTime: number`
 - `minPulldownDistance: number`

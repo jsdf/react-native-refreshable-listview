@@ -5,14 +5,20 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ![React Native Hacker News](http://i.imgur.com/gVmrxDe.png)
 
-### usage
+## usage
 
-props:
+### props
 
-- `loadData`: a function returning a promise or taking a callback, invoked 
+- `loadData: func.isRequired`: a function returning a promise or taking a callback, invoked 
   upon pulldown. spinner will show until the promise resolves or the 
   callback is called.
-- `refreshDescription`: text/element to show alongside spinner.
+- `refreshDescription: oneOfType([string, element])`: text/element to show alongside spinner.
+- `minDisplayTime: number`
+- `minBetweenTime: number`
+- `minPulldownDistance: number`
+- `activityIndicatorComponent: func`
+- `stylesheet: object`
+- `onScroll: func`
 
 ### example
 
@@ -56,6 +62,6 @@ var ArticlesScreen = React.createClass({
 })
 ```
 
-![Under Construction](https://jamesfriend.com.au/files/under-construction.gif)
+### changelog
 
-I just wrote this... use at your own risk. Not API stable.
+- **0.3.0** added some new props, fixed bug where refresh could happen twice

@@ -20,7 +20,7 @@
   ],
   "files": [
     "index.js",
-    "lib/"
+    "lib/*.js"
   ],
   "homepage": "https://github.com/jsdf/react-native-refreshable-listview",
   "bugs": "https://github.com/jsdf/react-native-refreshable-listview/issues",

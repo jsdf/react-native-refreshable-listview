@@ -7,18 +7,47 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ## usage
 
-### props
+### RefreshableListView
+#### props
 
-- `loadData: func.isRequired`: a function returning a promise or taking a callback, invoked 
-  upon pulldown. spinner will show until the promise resolves or the 
-  callback is called.
-- `refreshDescription: oneOfType([string, element])`: text/element to show alongside spinner.
+- `loadData: func.isRequired`
+  A function returning a promise or taking a callback, invoked upon pulldown. 
+  The refreshing indicator will show until the promise resolves or the callback 
+  is called.
+- `refreshDescription: oneOfType([string, element])`
+  Text/element to show alongside spinner. If a custom 
+  `refreshingIndictatorComponent` is used this value will be passed as its 
+  `description` prop.
+- `refreshingIndictatorComponent: oneOfType([func, element])`
+  Content to show in list header when refreshing. Can be a component class or 
+  instantiated element. Defaults to `RefreshableListView.RefreshingIndicator`.
+  You can easily customise the appearance of the indicator by passing in a
+  customised `<RefreshableListView.RefreshingIndicator />`, or provide your own
+  entirely custom content to be displayed.
 - `minDisplayTime: number`
+  Minimum time the spinner will show for.
 - `minBetweenTime: number`
+  Minimum time after a refresh before another refresh can be performed.
 - `minPulldownDistance: number`
-- `activityIndicatorComponent: func`
-- `stylesheet: object`
+  Minimum distance (in px) which the list has to be scrolled off the top to 
+  trigger a refresh.
 - `onScroll: func`
+  An event handler for the `onScroll` event which will be chained after the one
+  defined by the `RefreshableListView`.
+- `renderHeader: func`
+  A function to render content in the header, which will always be rendered 
+  (regardless of 'refreshing' status) 
+
+### RefreshableListView.RefreshingIndicator
+#### props
+
+- `description: oneOfType([string, element])`
+  Text/element to show alongside spinner.
+- `stylesheet: object`
+  A stylesheet object which overrides one or more of the styles defined in the 
+  [RefreshingIndicator stylesheet](lib/RefreshingIndicator.js).
+- `activityIndicatorComponent: oneOfType([func, element])`
+  The spinner to display. Defaults to `<ActivityIndicatorIOS />`.
 
 ### example
 

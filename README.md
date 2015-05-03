@@ -11,8 +11,8 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 #### props
 
 - `loadData: func.isRequired`
-  A function returning a promise or taking a callback, invoked upon pulldown. 
-  The refreshing indicator will show until the promise resolves or the callback 
+  A function returning a Promise or taking a callback, invoked upon pulldown. 
+  The refreshing indicator (spinner) will show until the promise resolves or the callback 
   is called.
 - `refreshDescription: oneOfType([string, element])`
   Text/element to show alongside spinner. If a custom 

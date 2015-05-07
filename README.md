@@ -8,11 +8,14 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 ## usage
 
 ### RefreshableListView
+Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
+functionality. Accepts the same props as ListView, with a few extras.
+
 #### props
 
 - `loadData: func.isRequired`
   A function returning a Promise or taking a callback, invoked upon pulldown. 
-  The refreshing indicator (spinner) will show until the promise resolves or the callback 
+  The refreshing indicator (spinner) will show until the Promise resolves or the callback 
   is called.
 - `refreshDescription: oneOfType([string, element])`
   Text/element to show alongside spinner. If a custom 
@@ -39,6 +42,8 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
   (regardless of 'refreshing' status) 
 
 ### RefreshableListView.RefreshingIndicator
+Component with activity indicator to be displayed in list header when refreshing.
+
 #### props
 
 - `description: oneOfType([string, element])`
@@ -48,6 +53,30 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
   [RefreshingIndicator stylesheet](lib/RefreshingIndicator.js).
 - `activityIndicatorComponent: oneOfType([func, element])`
   The spinner to display. Defaults to `<ActivityIndicatorIOS />`.
+
+
+### ControlledRefreshableListView
+Low level component used by `RefreshableListView`. Use this if you want to 
+manually control the refreshing status (rather than using a Promise).
+
+#### props
+- `onRefresh: func.isRequired`
+  Called when user pulls listview down to refresh.
+- `isRefreshing: bool.isRequired`
+  Whether or not to show the refreshing indicator.
+- `refreshDescription: oneOfType([string, element])`
+  *See `RefreshableListView`*
+- `refreshingIndictatorComponent: oneOfType([func, element])`
+  *See `RefreshableListView`*
+- `minPulldownDistance: number`
+  *See `RefreshableListView`*
+- `onScroll: func`
+  *See `RefreshableListView`*
+- `renderHeader: func`
+  *See `RefreshableListView`*
+
+### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
+Alias of `ListView.DataSource`, for convenience.
 
 ### example
 
@@ -73,7 +102,7 @@ var ArticlesScreen = React.createClass({
     })
   },
   reloadArticles() {
-    return ArticleStore.reload() // returns a promise of reload completion
+    return ArticleStore.reload() // returns a Promise of reload completion
   },
   renderArticle(article) {
     return <ArticleView article={article} />

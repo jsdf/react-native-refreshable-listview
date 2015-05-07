@@ -56,8 +56,8 @@ Component with activity indicator to be displayed in list header when refreshing
 
 
 ### ControlledRefreshableListView
-Low level component used by `RefreshableListView`. Use this if you want to 
-manually control the refreshing status (rather than using a Promise).
+Low level component used by `RefreshableListView`. Use this directly if you want 
+to manually control the refreshing status (rather than using a Promise).
 
 #### props
 - `onRefresh: func.isRequired`

@@ -84,12 +84,13 @@ Alias of `ListView.DataSource`, for convenience.
 var React = require('react-native')
 var {Text, View, ListView} = React
 var RefreshableListView = require('react-native-refreshable-listview')
+var deepEqual = require('deep-equal')
 
 var ArticleStore = require('../stores/ArticleStore')
 var StoreWatchMixin = require('./StoreWatchMixin')
 var ArticleView = require('./ArticleView')
 
-var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
+var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => !deepEqual(r1, r2)})
 
 var ArticlesScreen = React.createClass({
   mixins: [StoreWatchMixin],

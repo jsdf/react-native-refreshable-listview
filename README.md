@@ -5,13 +5,55 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ![React Native Hacker News](http://i.imgur.com/gVmrxDe.png)
 
-## usage
+## Usage
+
+### Example
+
+```js
+var React = require('react-native')
+var {Text, View, ListView} = React
+var RefreshableListView = require('react-native-refreshable-listview')
+
+var ArticleStore = require('../stores/ArticleStore')
+var StoreWatchMixin = require('./StoreWatchMixin')
+var ArticleView = require('./ArticleView')
+
+var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}) // assumes immutable objects
+
+var ArticlesScreen = React.createClass({
+  mixins: [StoreWatchMixin],
+  getInitialState() {
+    return {dataSource: ds.cloneWithRows(ArticleStore.all())}
+  },
+  getStoreWatches() {
+    this.watchStore(ArticleStore, () => {
+      this.setState({dataSource: ds.cloneWithRows(ArticleStore.all())})
+    })
+  },
+  reloadArticles() {
+    return ArticleStore.reload() // returns a Promise of reload completion
+  },
+  renderArticle(article) {
+    return <ArticleView article={article} />
+  },
+  render() {
+    return (
+      <RefreshableListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderArticle}
+        loadData={this.reloadArticles}
+        refreshDescription="Refreshing articles"
+      />
+    )
+  }
+})
+```
 
 ### RefreshableListView
 Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
 functionality. Accepts the same props as ListView, with a few extras.
 
-#### props
+#### Props
 
 - `loadData: func.isRequired`
   A function returning a Promise or taking a callback, invoked upon pulldown. 
@@ -44,7 +86,7 @@ functionality. Accepts the same props as ListView, with a few extras.
 ### RefreshableListView.RefreshingIndicator
 Component with activity indicator to be displayed in list header when refreshing.
 
-#### props
+#### Props
 
 - `description: oneOfType([string, element])`
   Text/element to show alongside spinner.
@@ -59,7 +101,7 @@ Component with activity indicator to be displayed in list header when refreshing
 Low level component used by `RefreshableListView`. Use this directly if you want 
 to manually control the refreshing status (rather than using a Promise).
 
-#### props
+#### Props
 - `onRefresh: func.isRequired`
   Called when user pulls listview down to refresh.
 - `isRefreshing: bool.isRequired`
@@ -78,49 +120,13 @@ to manually control the refreshing status (rather than using a Promise).
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
 Alias of `ListView.DataSource`, for convenience.
 
-### example
-
-```js
-var React = require('react-native')
-var {Text, View, ListView} = React
-var RefreshableListView = require('react-native-refreshable-listview')
-var deepEqual = require('deep-equal')
-
-var ArticleStore = require('../stores/ArticleStore')
-var StoreWatchMixin = require('./StoreWatchMixin')
-var ArticleView = require('./ArticleView')
-
-var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => !deepEqual(r1, r2)})
-
-var ArticlesScreen = React.createClass({
-  mixins: [StoreWatchMixin],
-  getInitialState() {
-    return {dataSource: ds.cloneWithRows(ArticleStore.all())}
-  },
-  getStoreWatches() {
-    this.watchStore(ArticleStore, () => {
-      this.setState({dataSource: ds.cloneWithRows(ArticleStore.all())})
-    })
-  },
-  reloadArticles() {
-    return ArticleStore.reload() // returns a Promise of reload completion
-  },
-  renderArticle(article) {
-    return <ArticleView article={article} />
-  },
-  render() {
-    return (
-      <RefreshableListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderArticle}
-        loadData={this.reloadArticles}
-        refreshDescription="Refreshing articles"
-      />
-    )
-  }
-})
-```
-
 ### changelog
 
-- **0.3.0** added some new props, fixed bug where refresh could happen twice
+- **1.0.0**
+  - Split RefreshableListView into 3 parts: 
+    - RefreshableListView handles 'refreshing' state by invoking 'loadData' callback and waiting for resolution.
+    - ControlledRefreshableListView handles rendering of ListView header, depending on isRefreshing prop. Calls           onRefresh handler when pulldown-to-refresh scroll motion occurs.
+    - RefreshingIndicator is the component rendered in the header of the ListView when refreshing. Pass in a              customised version of this (or a completely different component) to RefreshableListView or                          ControlledRefreshableListView if you want to customise refresh indicator appearance.
+  - Added Jest unit tests
+- **0.3.0** added minPulldownTime & minBetweenTime props, fixed bug where refresh could happen twice
+- **0.2.0** added support for ListView props setNativeProps and getScrollResponder (@almost & @sscotth)

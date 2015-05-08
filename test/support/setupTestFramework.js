@@ -18,20 +18,9 @@ sourceMapSupport.install({
 })
 
 jasmine.getEnv().beforeEach(function() {
-  this.last = function(items) {
-    return items[items.length - 1]
-  }
-
-  // helper for asserting on calls to React.createElement
-  this.expectCreateElementCall = function(call, expectedComponentClass, expectedProps) {
-    let [componentClass, props] = call
-    expect(componentClass).toBe(expectedComponentClass)
-    expect(props).toContainValues(expectedProps)
-  }
-
   this.shallowRender = require('./shallowRender')
 
-  this.addMatchers(require('./jasmineObjectMatchers'))
+  this.addMatchers(require('jasmine-object-matchers-jest')['1.3'])
 
   this.addMatchers({
     toBeObject() {

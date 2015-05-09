@@ -81,7 +81,15 @@ functionality. Accepts the same props as ListView, with a few extras.
   defined by the `RefreshableListView`.
 - `renderHeader: func`
   A function to render content in the header, which will always be rendered 
-  (regardless of 'refreshing' status) 
+  (regardless of 'refreshing' status)
+
+#### Customisation
+You can change the appearance of the refresh indicator by passing in a custom 
+
+```js
+
+        <RefreshableListView
+```
 
 ### RefreshableListView.RefreshingIndicator
 Component with activity indicator to be displayed in list header when refreshing.

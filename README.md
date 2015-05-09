@@ -83,14 +83,6 @@ functionality. Accepts the same props as ListView, with a few extras.
   A function to render content in the header, which will always be rendered 
   (regardless of 'refreshing' status)
 
-#### Customisation
-You can change the appearance of the refresh indicator by passing in a custom 
-
-```js
-
-        <RefreshableListView
-```
-
 ### RefreshableListView.RefreshingIndicator
 Component with activity indicator to be displayed in list header when refreshing.
 
@@ -103,7 +95,6 @@ Component with activity indicator to be displayed in list header when refreshing
   [RefreshingIndicator stylesheet](lib/RefreshingIndicator.js).
 - `activityIndicatorComponent: oneOfType([func, element])`
   The spinner to display. Defaults to `<ActivityIndicatorIOS />`.
-
 
 ### ControlledRefreshableListView
 Low level component used by `RefreshableListView`. Use this directly if you want 
@@ -127,6 +118,49 @@ to manually control the refreshing status (rather than using a Promise).
 
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
 Alias of `ListView.DataSource`, for convenience.
+
+## Customising the refresh indicator (spinner)
+
+### Style the default RefreshingIndicator
+```js
+var indicatorStylesheet = StyleSheet.create({
+  wrapper: {
+    backgroundColor: 'red',
+    height: 60,
+    marginTop: 10,
+  },
+  content: {
+    backgroundColor: 'blue',
+    marginTop: 10,
+    height: 60,
+  },
+})
+
+<RefreshableListView
+  refreshingIndictatorComponent={
+    <RefreshableListView.RefreshingIndicator stylesheet={indicatorStylesheet} />
+  }
+/>
+```
+
+### Provide a custom RefreshingIndicator
+
+```js
+var MyRefreshingIndicator = React.createClass({
+  render() {
+    return (
+      <View>
+        <MySpinner />
+        <Text>{this.props.description}</Text>
+      </View>
+    )
+  },
+})
+
+<RefreshableListView refreshingIndictatorComponent={MyRefreshingIndicator} />
+// or
+<RefreshableListView refreshingIndictatorComponent={<MyRefreshingIndicator />} />
+```
 
 ### changelog
 

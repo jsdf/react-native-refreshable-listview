@@ -4,7 +4,11 @@ var path = require('path')
 var crypto = require('crypto')
 
 var TMPDIR = path.join(os.tmpdir(), 'react-native-refreshable-listview-jest')
-if (!fs.existsSync(TMPDIR)) fs.mkdirSync(TMPDIR)
+try {
+  fs.mkdirSync(TMPDIR)
+} catch (err) {
+  if (err.code != 'EEXIST') console.error(err)
+}
 
 function sourceMapPath(srcpath) {
   return path.join(TMPDIR, crypto.createHash('md5').update(srcpath).digest('hex') + '.map')

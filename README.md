@@ -76,12 +76,21 @@ functionality. Accepts the same props as ListView, with a few extras.
 - `minPulldownDistance: number`
   Minimum distance (in px) which the list has to be scrolled off the top to 
   trigger a refresh.
+- `ignoreInertialScroll: bool`
+  Require the user to be actually touching the screen when the pulldown distance 
+  exceeds `minPulldownDistance` to trigger a refresh (eg. not just inertially 
+  scrolling off the top). Defaults to `true`.
 - `onScroll: func`
   An event handler for the `onScroll` event which will be chained after the one
   defined by the `RefreshableListView`.
 - `renderHeader: func`
   A function to render content in the header, which will always be rendered 
-  (regardless of 'refreshing' status)
+  (regardless of 'refreshing' status). Passed default header content (eg. a 
+  refreshing indicator or `null`).
+- `scrollEventThrottle: number`
+  How often `ListView` produces scroll events, in ms. Defaults to a fairly low 
+  value, try setting it higher if you encounter performance issues. Keep in mind
+  that a higher value will make the pulldown-to-refresh behaviour less responsive.
 
 ### RefreshableListView.RefreshingIndicator
 Component with activity indicator to be displayed in list header when refreshing.
@@ -111,9 +120,13 @@ to manually control the refreshing status (rather than using a Promise).
   *See `RefreshableListView`*
 - `minPulldownDistance: number`
   *See `RefreshableListView`*
+- `ignoreInertialScroll: bool`
+  *See `RefreshableListView`*
 - `onScroll: func`
   *See `RefreshableListView`*
 - `renderHeader: func`
+  *See `RefreshableListView`*
+- `scrollEventThrottle: number`
   *See `RefreshableListView`*
 
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource

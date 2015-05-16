@@ -177,11 +177,23 @@ var MyRefreshingIndicator = React.createClass({
 
 ### changelog
 
+- **1.1.0**
+  - added behaviour to ignore inertial scrolling (@dhrrgn)
+  - exposed props: ignoreInertialScroll, scrollEventThrottle
 - **1.0.0**
   - Split RefreshableListView into 3 parts: 
-    - RefreshableListView handles 'refreshing' state by invoking 'loadData' callback and waiting for resolution.
-    - ControlledRefreshableListView handles rendering of ListView header, depending on isRefreshing prop. Calls           onRefresh handler when pulldown-to-refresh scroll motion occurs.
-    - RefreshingIndicator is the component rendered in the header of the ListView when refreshing. Pass in a              customised version of this (or a completely different component) to RefreshableListView or                          ControlledRefreshableListView if you want to customise refresh indicator appearance.
+    - RefreshableListView handles 'refreshing' state by invoking 'loadData' 
+      callback and waiting for resolution.
+    - ControlledRefreshableListView handles rendering of ListView header, 
+      depending on isRefreshing prop. Calls onRefresh handler when 
+      pulldown-to-refresh scroll motion occurs.
+    - RefreshingIndicator is the component rendered in the header of the 
+      ListView when refreshing. Pass in a customised version of this (or a 
+      completely different component) to RefreshableListView or 
+      ControlledRefreshableListView if you want to customise refresh indicator 
+      appearance.
   - Added Jest unit tests
-- **0.3.0** added minPulldownTime & minBetweenTime props, fixed bug where refresh could happen twice
-- **0.2.0** added support for ListView props setNativeProps and getScrollResponder (@almost & @sscotth)
+- **0.3.0** added minPulldownTime & minBetweenTime props, fixed bug where 
+  refresh could happen twice
+- **0.2.0** added support for ListView props setNativeProps and 
+  getScrollResponder (@almost & @sscotth)

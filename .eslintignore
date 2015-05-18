@@ -1,3 +1,4 @@
+example/
 test/
 **/__tests__/**/*.js
 **/__mocks__/**/*.js

@@ -83,10 +83,14 @@ functionality. Accepts the same props as ListView, with a few extras.
 - `onScroll: func`
   An event handler for the `onScroll` event which will be chained after the one
   defined by the `RefreshableListView`.
-- `renderHeader: func`
+- `renderHeaderWrapper: func`
   A function to render content in the header, which will always be rendered 
-  (regardless of 'refreshing' status). Passed default header content (eg. a 
-  refreshing indicator or `null`).
+  (regardless of 'refreshing' status). **IMPORTANT:** The first argument passed 
+  to this function is the refresh indicator. You **must** render this within 
+  your custom header for the spinner to appear. See the 
+  [example](example/renderHeaderWrapper.js).
+- `renderHeader: func`
+  **Deprecated** - use `renderHeaderWrapper` instead.
 - `scrollEventThrottle: number`
   How often `ListView` produces scroll events, in ms. Defaults to a fairly low 
   value, try setting it higher if you encounter performance issues. Keep in mind
@@ -124,8 +128,10 @@ to manually control the refreshing status (rather than using a Promise).
   *See `RefreshableListView`*
 - `onScroll: func`
   *See `RefreshableListView`*
-- `renderHeader: func`
+- `renderHeaderWrapper: func`
   *See `RefreshableListView`*
+- `renderHeader: func`
+  **Deprecated** - use `renderHeaderWrapper` instead.
 - `scrollEventThrottle: number`
   *See `RefreshableListView`*
 
@@ -177,6 +183,14 @@ var MyRefreshingIndicator = React.createClass({
 
 ### changelog
 
+- **1.2.0**
+  - deprecated `renderHeader` in favour of `renderHeaderWrapper` as some 
+  developers seemed to be confused by the fact that a `renderHeader` handler 
+  for a standard `ListView` will not automatically *just work* with this component,
+  but rather needs to be modified as described in the documentation. The new prop
+  `renderHeaderWrapper` works identically to the previous one, however hopefully
+  now it is named differently it will be more apparent that its behaviour is not
+  the same as with `ListView`. The `renderHeader` prop will be removed in 2.0.
 - **1.1.0**
   - added behaviour to ignore inertial scrolling (@dhrrgn)
   - exposed props: ignoreInertialScroll, scrollEventThrottle

@@ -26,7 +26,7 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/test/support/preprocessor.js",
-    "setupEnvScriptFile": "<rootDir>/node_modules/babel-core/lib/babel/polyfill.js",
+    "setupEnvScriptFile": "<rootDir>/node_modules/babel-core/browser-polyfill.js",
     "setupTestFrameworkScriptFile": "<rootDir>/test/support/setupTestFramework.js",
     "unmockedModulePathPatterns": [
       "<rootDir>/test/support",

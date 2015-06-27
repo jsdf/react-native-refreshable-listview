@@ -51,7 +51,7 @@ var ArticlesScreen = React.createClass({
 
 ### RefreshableListView
 Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
-functionality. Accepts the same props as ListView, with a few extras.
+functionality. Accepts the same props as ListView (except `renderHeader`, see below), with a few extras.
 
 #### Props
 

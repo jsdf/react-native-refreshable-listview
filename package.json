@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
+    "watch": "watchy -w lib -- bash -c 'cp -a lib/ test/RefreshableListViewTest/node_modules/react-native-refreshable-listview/lib/'",
     "jest": "BABEL_JEST_STAGE=0 jest $JEST_ARGS",
     "test": "npm run lint && npm run jest"
   },
@@ -57,6 +58,7 @@
     "jest-cli": "^0.4.1",
     "react": "^0.13.1",
     "source-map-support": "^0.2.10",
+    "watchy": "^0.6.4",
     "xtend": "^4.0.0"
   },
   "dependencies": {

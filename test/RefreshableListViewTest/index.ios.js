@@ -30,7 +30,7 @@ var RefreshableListViewTest = React.createClass({
   },
   renderItem(item) {
     return (
-      <View style={{height: 40}}>
+      <View style={{height: 40, backgroundColor: '#ffffff', borderWidth: 0.5, borderColor: '#d6d7da'}}>
         <Text>
           {item.text}
         </Text>
@@ -44,6 +44,7 @@ var RefreshableListViewTest = React.createClass({
         renderRow={this.renderItem}
         loadData={this.reloadItems}
         refreshDescription="Refreshing items"
+        refreshPrompt="Pull down to refresh"
       />
     )
   },

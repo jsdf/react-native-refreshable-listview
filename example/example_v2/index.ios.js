@@ -1,6 +1,6 @@
 /**
- * it's just a sample code, cannot run directly 
- *
+ * pull and refresh
+ * react native
  */
 
 
@@ -24,29 +24,23 @@ var {
     var MyRefreshingIndicator = React.createClass({
       render() {
         return (
-          <View style={indicatorStylesheet.wrapper}>
-            <Spinner isVisible={true} size={20} type="Wave" color="#e67e22"/>
-          </View>
+          <Spinner isVisible={true} size={20} type="Wave" color="#e67e22"/>
         )
       },
     });
 
-    var MyRefreshingOnPull = React.createClass({
+    var MyPullingIndicator = React.createClass({
       render() {
         return (
-          <View style={indicatorStylesheet.wrapper}>
-            <Text>pull more to refresh</Text>
-          </View>
+          <Spinner isVisible={true} size={20} type="WanderingCubes" color="#e67e22"/>
         )
       },
     });
 
-    var MyRefreshingOnHold = React.createClass({
+    var MyHoldingIndicator = React.createClass({
       render() {
         return (
-          <View style={indicatorStylesheet.wrapper}>
-            <Text>Release to refresh</Text>
-          </View>
+          <Spinner isVisible={true} size={20} type="Circle" color="#e67e22"/>
         )
       },
     });
@@ -75,16 +69,20 @@ var listviewReactNative = React.createClass({
                 {"name" : "A","age":10},
                 {"name" : "A","age":10},
                 {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
+                {"name" : "A","age":10},
             ]),
         };
-    },
-    renderHeaderWrapper(Indicator) {
-        return (
-            <View>
-                {/*  you MUST render the refreshingIndicator (which is passed in as the first argument) */}
-                {Indicator}
-            </View>
-        )
     },
     renderRow: function(rowData, sectionID, rowID){
         return (
@@ -98,17 +96,20 @@ var listviewReactNative = React.createClass({
       return (
         <View>
           <View style={css.container}>
-              <RefreshableListView
-                  refreshingIndictatorComponent ={MyRefreshingIndicator}
-                  refreshingOnPullComponent ={MyRefreshingOnPull}
-                  refreshingOnHoldComponent ={MyRefreshingOnHold}
-                  renderHeaderWrapper={this.renderHeaderWrapper}
-                  dataSource ={this.state.dataSource}
-                  renderRow ={this.renderRow.bind(this)}
-                  loadData ={this.renderRow}
-                  minPulldownDistance ={40}
-                  minDisplayTime ={2000}
-                  />
+            <RefreshableListView
+              style={css.refreshableListView}
+              pullingIndicator= {MyPullingIndicator}
+              holdingIndicator= {MyHoldingIndicator}
+              refreshingIndicator= {MyRefreshingIndicator}
+              pullingPrompt= 'pull to refresh'
+              holdingPrompt= 'release to refresh'
+              refreshingPrompt= 'refreshing'
+              dataSource ={this.state.dataSource}
+              renderRow ={this.renderRow.bind(this)}
+              loadData ={this.renderRow}
+              minPulldownDistance ={40}
+              minDisplayTime ={2000}
+              />
           </View>
         </View>
       );
@@ -118,9 +119,9 @@ var listviewReactNative = React.createClass({
 var indicatorStylesheet = StyleSheet.create({
   wrapper: {
     height: 40,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   text: {
     textAlign : "center"
@@ -128,19 +129,20 @@ var indicatorStylesheet = StyleSheet.create({
 })
 
 var css = StyleSheet.create({
+
     container: {
-        marginTop : 35
+      marginTop : 0,
     },
 
     row : {
-        flexDirection : "row",
-        paddingBottom : 10,
-        borderBottomWidth : 1,
-        borderColor : '#ccc',
-        marginBottom : 10
+      flexDirection : "row",
+      paddingBottom : 10,
+      borderBottomWidth : 1,
+      borderColor : '#ccc',
+      marginBottom : 10
     },
     text : {
-        flex : 1
+      flex : 1
     }
 });
 

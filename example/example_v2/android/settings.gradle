@@ -1,0 +1,3 @@
+rootProject.name = 'listviewReactNative'
+
+include ':app'

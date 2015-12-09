@@ -1,0 +1,9 @@
+{
+  "esnext": true,
+	"preset": "node-style-guide",
+	"maximumLineLength": null,
+  "requireCapitalizedComments": null,
+  "requireEarlyReturn": null,
+  "disallowSemicolons": true,
+  "requireCurlyBraces": null
+}

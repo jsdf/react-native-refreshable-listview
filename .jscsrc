@@ -5,5 +5,10 @@
   "requireCapitalizedComments": null,
   "requireEarlyReturn": null,
   "disallowSemicolons": true,
-  "requireCurlyBraces": null
+  "requireCurlyBraces": null,
+  "requireSpaceBeforeKeywords": [
+    "else",
+    "while",
+    "catch"
+  ]
 }

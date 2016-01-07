@@ -42,3 +42,5 @@ example/output/
 main.jsbundle
 
 images/generated/
+
+.gradle

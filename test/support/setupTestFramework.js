@@ -20,6 +20,8 @@ sourceMapSupport.install({
 jasmine.getEnv().beforeEach(function() {
   this.shallowRender = require('./shallowRender')
 
+  jest.setMock('react-native', require.requireActual('../../lib/__mocks__/react-native'))
+
   this.addMatchers(require('jasmine-object-matchers-jest')['1.3'])
 
   this.addMatchers({

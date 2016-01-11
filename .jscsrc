@@ -5,6 +5,8 @@
   "requireCapitalizedComments": null,
   "requireEarlyReturn": null,
   "disallowSemicolons": true,
+  "disallowMultipleSpaces": true,
+  "disallowPaddingNewlinesInBlocks": true,
   "requireCurlyBraces": null,
   "requireSpaceBeforeKeywords": [
     "else",

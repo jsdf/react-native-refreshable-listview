@@ -1,7 +1,7 @@
 'use strict';
 
 // Export RefreshableListView
-var RefreshableListView = {
+var RefreshableListViewDeps = {
   get DataSource() {
     return require('./lib/ListView').DataSource;
   },
@@ -11,8 +11,6 @@ var RefreshableListView = {
   get ControlledRefreshableListView() {
     return require('./lib/ControlledRefreshableListView');
   },
-
-  ...require('./lib/RefreshableListView'),
 };
 
-module.exports = RefreshableListView;
+module.exports = Object.assign(require('./lib/RefreshableListView'), RefreshableListViewDeps);

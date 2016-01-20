@@ -8,6 +8,7 @@
   "disallowMultipleSpaces": true,
   "disallowPaddingNewlinesInBlocks": true,
   "requireCurlyBraces": null,
+  "requireLineFeedAtFileEnd": true,
   "requireSpaceBeforeKeywords": [
     "else",
     "while",

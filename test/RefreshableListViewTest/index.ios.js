@@ -5,6 +5,7 @@ var {
   Text,
   View,
   ListView,
+  StatusBarIOS,
 } = React;
 
 var RefreshableListView = require('react-native-refreshable-listview')
@@ -21,6 +22,9 @@ var RefreshableListViewTest = React.createClass({
   getInitialState() {
     var rows = makeSequence(100).map((n) => ({text: 'not refreshed '+n}))
     return {dataSource: ds.cloneWithRows(rows)}
+  },
+  componentDidMount() {
+    StatusBarIOS.setStyle(0)
   },
   reloadItems() {
     return delay(1000).then(() => {
@@ -39,13 +43,15 @@ var RefreshableListViewTest = React.createClass({
   },
   render() {
     return (
-      <RefreshableListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderItem}
-        loadData={this.reloadItems}
-        refreshDescription="Refreshing items"
-        refreshPrompt="Pull down to refresh"
-      />
+      <View style={{marginTop: 20}}>
+        <RefreshableListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderItem}
+          loadData={this.reloadItems}
+          refreshDescription="Refreshing items"
+          refreshPrompt="Pull down to refresh"
+        />
+      </View>
     )
   },
 });

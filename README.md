@@ -222,6 +222,16 @@ var MyRefreshingIndicator = React.createClass({
 
 ### changelog
 
+- **2.0.0-beta3**
+  - fixed proptype warnings from internal component
+  - adjusted default styling of refreshing indicator
+
+- **2.0.0-beta2**
+  - pulling down now reveals refreshing indicator behind current view, rather
+  than the refreshing indicator moving down from the top of the screen
+  - `renderHeaderWrapper` is no longer used 
+  - fixed infinite refreshing when pulled down
+
 - **1.2.0**
   - deprecated `renderHeader` in favour of `renderHeaderWrapper` as some 
   developers seemed to be confused by the fact that a `renderHeader` handler 

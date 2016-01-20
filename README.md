@@ -31,7 +31,9 @@ var ArticlesScreen = React.createClass({
     })
   },
   reloadArticles() {
-    return ArticleStore.reload() // returns a Promise of reload completion
+    // returns a Promise of reload completion
+    // for a Promise-free version see ControlledRefreshableListView below
+    return ArticleStore.reload()
   },
   renderArticle(article) {
     return <ArticleView article={article} />
@@ -61,9 +63,9 @@ functionality. Accepts the same props as ListView (except `renderHeader`, see be
   is called.
 - `refreshDescription: oneOfType([string, element])`
   Text/element to show alongside spinner. If a custom 
-  `refreshingIndictatorComponent` is used this value will be passed as its 
+  `refreshingIndicatorComponent` is used this value will be passed as its 
   `description` prop.
-- `refreshingIndictatorComponent: oneOfType([func, element])`
+- `refreshingIndicatorComponent: oneOfType([func, element])`
   Content to show in list header when refreshing. Can be a component class or 
   instantiated element. Defaults to `RefreshableListView.RefreshingIndicator`.
   You can easily customise the appearance of the indicator by passing in a
@@ -83,35 +85,58 @@ functionality. Accepts the same props as ListView (except `renderHeader`, see be
 - `onScroll: func`
   An event handler for the `onScroll` event which will be chained after the one
   defined by the `RefreshableListView`.
-- `renderHeaderWrapper: func`
-  A function to render content in the header, which will always be rendered 
-  (regardless of 'refreshing' status). **IMPORTANT:** The first argument passed 
-  to this function is the refresh indicator. You **must** render this within 
-  your custom header for the spinner to appear. See the 
-  [example](example/renderHeaderWrapper.js).
-- `renderHeader: func`
-  **Deprecated** - use `renderHeaderWrapper` instead.
 - `scrollEventThrottle: number`
   How often `ListView` produces scroll events, in ms. Defaults to a fairly low 
   value, try setting it higher if you encounter performance issues. Keep in mind
   that a higher value will make the pulldown-to-refresh behaviour less responsive.
 
-### RefreshableListView.RefreshingIndicator
-Component with activity indicator to be displayed in list header when refreshing.
-
-#### Props
-
-- `description: oneOfType([string, element])`
-  Text/element to show alongside spinner.
-- `stylesheet: object`
-  A stylesheet object which overrides one or more of the styles defined in the 
-  [RefreshingIndicator stylesheet](lib/RefreshingIndicator.js).
-- `activityIndicatorComponent: oneOfType([func, element])`
-  The spinner to display. Defaults to `<ActivityIndicatorIOS />`.
-
 ### ControlledRefreshableListView
 Low level component used by `RefreshableListView`. Use this directly if you want 
 to manually control the refreshing status (rather than using a Promise).
+
+This component is more suitable for use in a [Redux](https://github.com/rackt/redux)-style connected component.
+
+```js
+var React = require('react-native')
+var {Text, View, ListView} = React
+var {ControlledRefreshableListView} = require('react-native-refreshable-listview')
+
+var ArticleView = require('./ArticleView')
+
+var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}) // assumes immutable objects
+
+var ArticlesScreen = React.createClass({
+  propTypes: {
+    // eg. props mapped from store state
+    articles: React.PropTypes.array.isRequired,
+    isRefreshingArticles: React.PropTypes.bool.isRequired,
+    // eg. a bound action creator
+    refreshArticles: React.PropTypes.func.isRequired,
+  },
+  getInitialState() {
+    return {dataSource: ds.cloneWithRows(this.props.articles)}
+  },
+  componentWillReceiveProps(nextProps) {
+    if (this.props.articles !== nextProps.articles) {
+      this.setState({dataSource: ds.cloneWithRows(nextProps.articles)})
+    }
+  },
+  renderArticle(article) {
+    return <ArticleView article={article} />
+  },
+  render() {
+    return (
+      <ControlledRefreshableListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderArticle}
+        isRefreshing={this.props.isRefreshingArticles}
+        onRefresh={this.props.refreshArticles}
+        refreshDescription="Refreshing articles"
+      />
+    )
+  }
+})
+```
 
 #### Props
 - `onRefresh: func.isRequired`
@@ -120,7 +145,7 @@ to manually control the refreshing status (rather than using a Promise).
   Whether or not to show the refreshing indicator.
 - `refreshDescription: oneOfType([string, element])`
   *See `RefreshableListView`*
-- `refreshingIndictatorComponent: oneOfType([func, element])`
+- `refreshingIndicatorComponent: oneOfType([func, element])`
   *See `RefreshableListView`*
 - `minPulldownDistance: number`
   *See `RefreshableListView`*
@@ -135,8 +160,22 @@ to manually control the refreshing status (rather than using a Promise).
 - `scrollEventThrottle: number`
   *See `RefreshableListView`*
 
+### RefreshableListView.RefreshingIndicator
+Component with activity indicator to be displayed in list header when refreshing.
+(also exposed as `ControlledRefreshableListView.RefreshingIndicator`)
+
+#### Props
+
+- `description: oneOfType([string, element])`
+  Text/element to show alongside spinner.
+- `stylesheet: object`
+  A stylesheet object which overrides one or more of the styles defined in the 
+  [RefreshingIndicator stylesheet](lib/RefreshingIndicator.js).
+- `activityIndicatorComponent: oneOfType([func, element])`
+  The spinner to display. Defaults to `<ActivityIndicatorIOS />`.
+
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
-Alias of `ListView.DataSource`, for convenience.
+Aliases of `ListView.DataSource`, for convenience.
 
 ## Customising the refresh indicator (spinner)
 
@@ -156,7 +195,7 @@ var indicatorStylesheet = StyleSheet.create({
 })
 
 <RefreshableListView
-  refreshingIndictatorComponent={
+  refreshingIndicatorComponent={
     <RefreshableListView.RefreshingIndicator stylesheet={indicatorStylesheet} />
   }
 />
@@ -176,9 +215,9 @@ var MyRefreshingIndicator = React.createClass({
   },
 })
 
-<RefreshableListView refreshingIndictatorComponent={MyRefreshingIndicator} />
+<RefreshableListView refreshingIndicatorComponent={MyRefreshingIndicator} />
 // or
-<RefreshableListView refreshingIndictatorComponent={<MyRefreshingIndicator />} />
+<RefreshableListView refreshingIndicatorComponent={<MyRefreshingIndicator />} />
 ```
 
 ### changelog

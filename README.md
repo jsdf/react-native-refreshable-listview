@@ -11,7 +11,9 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 You can install the latest beta with `npm install react-native-refreshable-listview@next`
 
-### Example
+### RefreshableListView
+Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
+functionality. Accepts the same props as ListView, plus a few extras (see the **props** definitions below).
 
 ```js
 var React = require('react-native')
@@ -54,10 +56,6 @@ var ArticlesScreen = React.createClass({
   }
 })
 ```
-
-### RefreshableListView
-Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
-functionality. Accepts the same props as ListView (except `renderHeader`, see below), with a few extras.
 
 #### Props
 
@@ -177,9 +175,12 @@ Component with activity indicator to be displayed in list header when refreshing
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
 Aliases of `ListView.DataSource`, for convenience.
 
-## Customising the refresh indicator (spinner)
+## Howto
 
-### Style the default RefreshingIndicator
+### Customise the refresh indicator (spinner)
+
+Your first option is to style the default RefreshingIndicator:
+
 ```js
 var indicatorStylesheet = StyleSheet.create({
   wrapper: {
@@ -201,7 +202,7 @@ var indicatorStylesheet = StyleSheet.create({
 />
 ```
 
-### Provide a custom RefreshingIndicator
+Alternatively, you can provide a custom RefreshingIndicator:
 
 ```js
 var MyRefreshingIndicator = React.createClass({
@@ -220,7 +221,7 @@ var MyRefreshingIndicator = React.createClass({
 <RefreshableListView refreshingIndicatorComponent={<MyRefreshingIndicator />} />
 ```
 
-### changelog
+## Changelog
 
 - **2.0.0-beta3**
   - fixed proptype warnings from internal component

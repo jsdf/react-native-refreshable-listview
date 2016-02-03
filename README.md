@@ -7,6 +7,10 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ## Usage
 
+**Note:** these are the docs for the 2.x branch, currently in beta. If you are looking for the docs for a 1.x version, see the [1.x branch](https://github.com/jsdf/react-native-refreshable-listview/tree/1.x).
+
+You can install the latest beta with `npm install react-native-refreshable-listview@next`
+
 ### Example
 
 ```js
@@ -153,10 +157,6 @@ var ArticlesScreen = React.createClass({
   *See `RefreshableListView`*
 - `onScroll: func`
   *See `RefreshableListView`*
-- `renderHeaderWrapper: func`
-  *See `RefreshableListView`*
-- `renderHeader: func`
-  **Deprecated** - use `renderHeaderWrapper` instead.
 - `scrollEventThrottle: number`
   *See `RefreshableListView`*
 

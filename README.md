@@ -93,6 +93,8 @@ var ArticlesScreen = React.createClass({
   that a higher value will make the pulldown-to-refresh behaviour less responsive.
 - `colors: array of strings`
   Colors to be used for pull to refresh indicator in Android
+- `progressBackgroundColor: string`
+  Color to be used for pull to refresh indicator background in Android
 
 
 ### ControlledRefreshableListView

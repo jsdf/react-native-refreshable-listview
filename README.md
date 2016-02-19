@@ -91,6 +91,11 @@ var ArticlesScreen = React.createClass({
   How often `ListView` produces scroll events, in ms. Defaults to a fairly low 
   value, try setting it higher if you encounter performance issues. Keep in mind
   that a higher value will make the pulldown-to-refresh behaviour less responsive.
+- `colors: array of strings`
+  Colors to be used for pull to refresh indicator in Android
+- `progressBackgroundColor: string`
+  Color to be used for pull to refresh indicator background in Android
+
 
 ### ControlledRefreshableListView
 Low level component used by `RefreshableListView`. Use this directly if you want 

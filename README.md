@@ -7,7 +7,13 @@ In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHacke
 
 ## Usage
 
-### Example
+**Note:** these are the docs for the 2.x branch, currently in beta. If you are looking for the docs for a 1.x version, see the [1.x branch](https://github.com/jsdf/react-native-refreshable-listview/tree/1.x).
+
+You can install the latest beta with `npm install react-native-refreshable-listview@next`
+
+### RefreshableListView
+Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
+functionality. Accepts the same props as ListView, plus a few extras (see the **props** definitions below).
 
 ```js
 var React = require('react-native')
@@ -50,10 +56,6 @@ var ArticlesScreen = React.createClass({
   }
 })
 ```
-
-### RefreshableListView
-Replace a ListView with a RefreshableListView to add pulldown-to-refresh 
-functionality. Accepts the same props as ListView (except `renderHeader`, see below), with a few extras.
 
 #### Props
 
@@ -153,10 +155,6 @@ var ArticlesScreen = React.createClass({
   *See `RefreshableListView`*
 - `onScroll: func`
   *See `RefreshableListView`*
-- `renderHeaderWrapper: func`
-  *See `RefreshableListView`*
-- `renderHeader: func`
-  **Deprecated** - use `renderHeaderWrapper` instead.
 - `scrollEventThrottle: number`
   *See `RefreshableListView`*
 
@@ -177,9 +175,12 @@ Component with activity indicator to be displayed in list header when refreshing
 ### RefreshableListView.DataSource, ControlledRefreshableListView.DataSource
 Aliases of `ListView.DataSource`, for convenience.
 
-## Customising the refresh indicator (spinner)
+## Howto
 
-### Style the default RefreshingIndicator
+### Customise the refresh indicator (spinner)
+
+Your first option is to style the default RefreshingIndicator:
+
 ```js
 var indicatorStylesheet = StyleSheet.create({
   wrapper: {
@@ -201,7 +202,7 @@ var indicatorStylesheet = StyleSheet.create({
 />
 ```
 
-### Provide a custom RefreshingIndicator
+Alternatively, you can provide a custom RefreshingIndicator:
 
 ```js
 var MyRefreshingIndicator = React.createClass({
@@ -220,7 +221,7 @@ var MyRefreshingIndicator = React.createClass({
 <RefreshableListView refreshingIndicatorComponent={<MyRefreshingIndicator />} />
 ```
 
-### changelog
+## Changelog
 
 - **2.0.0-beta3**
   - fixed proptype warnings from internal component

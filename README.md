@@ -1,6 +1,8 @@
 # React Native RefreshableListView
 A pull-to-refresh ListView which shows a loading spinner while your data reloads
 
+![Build Status](https://api.travis-ci.org/jsdf/react-native-refreshable-listview.svg)
+
 In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHackerNews)):
 
 ![React Native Hacker News](http://i.imgur.com/gVmrxDe.png)
@@ -227,6 +229,9 @@ var MyRefreshingIndicator = React.createClass({
 ```
 
 ## Changelog
+
+- **2.0.0-beta4**
+  - added Android support! (@maraujop)
 
 - **2.0.0-beta3**
   - fixed proptype warnings from internal component

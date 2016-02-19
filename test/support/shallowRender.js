@@ -1,7 +1,6 @@
-var React = require('react/addons')
+var TestUtils = require('react-addons-test-utils')
 
 function shallowRender(element) {
-  var {TestUtils} = React.addons
   var shallowRenderer = TestUtils.createRenderer()
 
   // add a method to expose instantiated component

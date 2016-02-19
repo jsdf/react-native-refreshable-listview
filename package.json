@@ -34,6 +34,9 @@
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/babel-core",
       "<rootDir>/node_modules/source-map-support",
+      "<rootDir>/node_modules/inspect-react-element",
+      "<rootDir>/node_modules/react-shallow-testutils",
+      "<rootDir>/node_modules/react-addons-test-utils",
       "<rootDir>/node_modules/absolute-path",
       "<rootDir>/node_modules/xtend",
       "<rootDir>/node_modules/jasmine-object-matchers-jest",
@@ -54,15 +57,18 @@
     "babel-core": "^5.8.34",
     "eslint": "^0.19.0",
     "eslint-plugin-react": "^2.1.1",
+    "inspect-react-element": "^1.1.1",
     "jasmine-object-matchers-jest": "^0.1.0",
     "jest-cli": "^0.8.2",
     "jscs": "^2.7.0",
-    "react": "^0.13.1",
+    "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "source-map-support": "^0.2.10",
     "watchy": "^0.6.4",
     "xtend": "^4.0.0"
   },
   "dependencies": {
-    "is-promise": "^2.0.0"
+    "is-promise": "^2.0.0",
+    "jest-cli": "^0.9.0-fb2"
   }
 }

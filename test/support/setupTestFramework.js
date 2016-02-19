@@ -1,6 +1,7 @@
 let fs = require('fs')
 let sourceMapSupport = require('source-map-support')
 let absolutePath = require('absolute-path')
+let inspectReactElement = require('inspect-react-element')
 let sourceMapPath = require('./sourceMapPath')
 
 sourceMapSupport.install({
@@ -18,7 +19,9 @@ sourceMapSupport.install({
 })
 
 jasmine.getEnv().beforeEach(function() {
+  let React = require.requireActual('react/dist/react-with-addons')
   this.shallowRender = require('./shallowRender')
+  window.printElement = (el) => console.log('\n' + inspectReactElement(el))
 
   jest.setMock('react-native', require.requireActual('../../lib/__mocks__/react-native'))
 
@@ -32,7 +35,13 @@ jasmine.getEnv().beforeEach(function() {
       return typeof this.actual == 'function'
     },
     toBeReactElement() {
-      return this.actual && typeof this.actual == 'object' && this.actual._isReactElement
+      return React.isValidElement(this.actual)
+    },
+    toBeReactElementOfType(type) {
+      return (
+        React.isValidElement(this.actual) &&
+        this.actual.type === type
+      )
     },
   })
 })

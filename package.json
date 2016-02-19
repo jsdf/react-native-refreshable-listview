@@ -63,6 +63,7 @@
     "jscs": "^2.7.0",
     "react": "^0.14.7",
     "react-addons-test-utils": "^0.14.7",
+    "react-shallow-testutils": "^1.0.0",
     "source-map-support": "^0.2.10",
     "watchy": "^0.6.4",
     "xtend": "^4.0.0"

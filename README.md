@@ -108,7 +108,7 @@ This component is more suitable for use in a [Redux](https://github.com/rackt/re
 ```js
 var React = require('react-native')
 var {Text, View, ListView} = React
-var {ControlledRefreshableListView} = require('react-native-refreshable-listview')
+var ControlledRefreshableListView = require('react-native-refreshable-listview/lib/ControlledRefreshableListView')
 
 var ArticleView = require('./ArticleView')
 

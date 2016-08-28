@@ -7,6 +7,6 @@ Object.assign(RefreshableListView, {
   DataSource,
   RefreshingIndicator,
   ControlledRefreshableListView,
-})
+});
 
 export default RefreshableListView;

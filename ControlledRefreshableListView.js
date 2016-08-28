@@ -5,6 +5,6 @@ import RefreshingIndicator from './lib/RefreshingIndicator';
 Object.assign(ControlledRefreshableListView, {
   DataSource,
   RefreshingIndicator,
-})
+});
 
-export default ControlledRefreshableListView
+export default ControlledRefreshableListView;

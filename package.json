@@ -1,16 +1,92 @@
 {
-  "name": "react-native-refreshable-listview",
-  "version": "2.0.0-beta3",
-  "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint .",
-    "watch": "watchy -w lib -- bash -c 'cp -a lib/ test/RefreshableListViewTest/node_modules/react-native-refreshable-listview/lib/'",
-    "jest": "BABEL_JEST_STAGE=0 jest $JEST_ARGS",
-    "test": "npm run lint && npm run jest"
+  "_args": [
+    [
+      "react-native-refreshable-listview",
+      "/Users/danillofelix/Development/ownprojects/sn/Spotnik/spotnikEvo/spotnik"
+    ]
+  ],
+  "_from": "react-native-refreshable-listview@latest",
+  "_id": "react-native-refreshable-listview@1.3.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/react-native-refreshable-listview",
+  "_nodeVersion": "0.10.26",
+  "_npmUser": {
+    "email": "james@jsdf.co",
+    "name": "jsdf"
   },
-  "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
-  "license": "ISC",
+  "_npmVersion": "2.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "react-native-refreshable-listview",
+    "raw": "react-native-refreshable-listview",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-refreshable-listview/-/react-native-refreshable-listview-1.3.0.tgz",
+  "_shasum": "d31b3c8535a38947c3073bc4b026f5bb9bcdd9f1",
+  "_shrinkwrap": null,
+  "_spec": "react-native-refreshable-listview",
+  "_where": "/Users/danillofelix/Development/ownprojects/sn/Spotnik/spotnikEvo/spotnik",
+  "author": {
+    "email": "james@jsdf.co",
+    "name": "James Friend",
+    "url": "http://jsdf.co/"
+  },
+  "bugs": {
+    "url": "https://github.com/jsdf/react-native-refreshable-listview/issues"
+  },
+  "dependencies": {
+    "is-promise": "^2.0.0"
+  },
+  "description": "A pull-to-refresh ListView which shows a loading spinner while your data reloads",
+  "devDependencies": {
+    "absolute-path": "0.0.0",
+    "babel-core": "^5.2.15",
+    "eslint": "^0.19.0",
+    "eslint-plugin-react": "^2.1.1",
+    "jasmine-object-matchers-jest": "^0.1.0",
+    "jest-cli": "^0.4.1",
+    "react": "^0.13.1",
+    "source-map-support": "^0.2.10",
+    "xtend": "^4.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "d31b3c8535a38947c3073bc4b026f5bb9bcdd9f1",
+    "tarball": "https://registry.npmjs.org/react-native-refreshable-listview/-/react-native-refreshable-listview-1.3.0.tgz"
+  },
+  "gitHead": "4c610c5d8b19333c22e7cd8d731ed2fd8c50d3b6",
+  "homepage": "https://github.com/jsdf/react-native-refreshable-listview",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ],
+    "scriptPreprocessor": "<rootDir>/test/support/preprocessor.js",
+    "setupEnvScriptFile": "<rootDir>/node_modules/babel-core/browser-polyfill.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/support/setupTestFramework.js",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/test/support",
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/babel-core",
+      "<rootDir>/node_modules/source-map-support",
+      "<rootDir>/node_modules/absolute-path",
+      "<rootDir>/node_modules/xtend",
+      "<rootDir>/node_modules/jasmine-object-matchers-jest",
+      "<rootDir>/node_modules/is-promise"
+    ]
+  },
   "keywords": [
     "react",
     "react-native",
@@ -19,56 +95,25 @@
     "mobile",
     "ui"
   ],
-  "homepage": "https://github.com/jsdf/react-native-refreshable-listview",
-  "bugs": "https://github.com/jsdf/react-native-refreshable-listview/issues",
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "james@jsdf.co",
+      "name": "jsdf"
+    }
+  ],
+  "name": "react-native-refreshable-listview",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git://github.com/jsdf/react-native-refreshable-listview.git"
   },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/test/support/preprocessor.js",
-    "setupEnvScriptFile": "<rootDir>/node_modules/babel-core/browser-polyfill.js",
-    "setupTestFrameworkScriptFile": "<rootDir>/test/support/setupTestFramework.js",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/test/support",
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/babel-core",
-      "<rootDir>/node_modules/source-map-support",
-      "<rootDir>/node_modules/inspect-react-element",
-      "<rootDir>/node_modules/react-shallow-testutils",
-      "<rootDir>/node_modules/react-addons-test-utils",
-      "<rootDir>/node_modules/absolute-path",
-      "<rootDir>/node_modules/xtend",
-      "<rootDir>/node_modules/jasmine-object-matchers-jest",
-      "<rootDir>/node_modules/is-promise"
-    ],
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
-    ]
+  "scripts": {
+    "jest": "BABEL_JEST_STAGE=0 jest $JEST_ARGS",
+    "lint": "eslint .",
+    "test": "npm run lint && npm run jest"
   },
-  "devDependencies": {
-    "absolute-path": "0.0.0",
-    "babel-core": "^5.8.34",
-    "eslint": "^0.19.0",
-    "eslint-plugin-react": "^2.1.1",
-    "inspect-react-element": "^1.1.1",
-    "jasmine-object-matchers-jest": "^0.1.0",
-    "jest-cli": "^0.9.0-fb2",
-    "jscs": "^2.7.0",
-    "react": "^0.14.7",
-    "react-addons-test-utils": "^0.14.7",
-    "react-shallow-testutils": "^1.0.0",
-    "source-map-support": "^0.2.10",
-    "watchy": "^0.6.4",
-    "xtend": "^4.0.0"
-  },
-  "dependencies": {
-    "is-promise": "^2.0.0"
-  }
+  "version": "1.3.0"
 }

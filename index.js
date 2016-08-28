@@ -1,1 +1,2 @@
-module.exports = require('./RefreshableListView')
+import RefreshableListView from './lib/RefreshableListView';
+export default RefreshableListView;

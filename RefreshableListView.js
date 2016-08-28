@@ -1,7 +1,7 @@
-var RefreshableListView = require('./lib/RefreshableListView')
-var ControlledRefreshableListView = require('./ControlledRefreshableListView')
-var {DataSource} = require('./lib/ListView')
-var RefreshingIndicator = require('./lib/RefreshingIndicator')
+import RefreshableListView from './lib/RefreshableListView';
+import ControlledRefreshableListView from './ControlledRefreshableListView';
+import {DataSource} from './lib/ListView';
+import RefreshingIndicator from './lib/RefreshingIndicator';
 
 Object.assign(RefreshableListView, {
   DataSource,
@@ -9,4 +9,4 @@ Object.assign(RefreshableListView, {
   ControlledRefreshableListView,
 })
 
-module.exports = RefreshableListView
+export default RefreshableListView;

@@ -1,1 +1,2 @@
-module.exports = require('./lib/RefreshingIndicator')
+import RefreshingIndicator from './lib/RefreshingIndicator';
+export default RefreshingIndicator;

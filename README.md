@@ -1,6 +1,8 @@
 # React Native RefreshableListView
 A pull-to-refresh ListView which shows a loading spinner while your data reloads
 
+*Deprecated*: now you can use the built-in [RefreshControl](https://facebook.github.io/react-native/docs/refreshcontrol.html) instead.
+
 ![Build Status](https://api.travis-ci.org/jsdf/react-native-refreshable-listview.svg)
 
 In action (from [ReactNativeHackerNews](https://github.com/jsdf/ReactNativeHackerNews)):
